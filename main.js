@@ -44,7 +44,7 @@ function init_threeScene(spec) {
     new THREE.MeshNormalMaterial()
   );
   box.position.set(0, 0.3, 0); // near top of the head
-  helper.faceObject.add(box);
+  threeStuffs.faceObject.add(box);
 
 
 
