@@ -81,7 +81,7 @@ function init_threeScene(spec) {
 
   const loader = new THREE.GLTFLoader();
 
-  loader.load('models3D/Hair.glb', function (gltf) {
+  loader.load('Hair.glb', function (gltf) {
     const model = gltf.scene;
 
     model.traverse((o) => {
