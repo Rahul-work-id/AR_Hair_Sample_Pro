@@ -39,19 +39,12 @@ function init_threeScene(spec) {
   threeStuffs.faceObject.add(r.occluder);
 
   // ADD HAIR MODEL (.glb)
-  const loader = new THREE.GLTFLoader();
-  loader.load('Hair.glb', (gltf) => {
-    const hairModel = gltf.scene;
-    hairModel.scale.set(1.5, 1.5, 1.5);
-    hairModel.position.set(0, 0.8, 0);
-    hairModel.traverse((child) => {
-      if (child.isMesh) {
-        child.material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
-        child.frustumCulled = false;
-      }
-    });
-    helper.faceObject.add(hairModel);
-  });
+  const box = new THREE.Mesh(
+    new THREE.BoxGeometry(0.2, 0.2, 0.2),
+    new THREE.MeshNormalMaterial()
+  );
+  box.position.set(0, 0.3, 0); // near top of the head
+  helper.faceObject.add(box);
 
 
 
