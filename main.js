@@ -38,13 +38,6 @@ function init_threeScene(spec) {
   r.occluder.scale.multiplyScalar(0.0084);
   threeStuffs.faceObject.add(r.occluder);
 
-  // ADD HAIR MODEL (.glb)
-  const box = new THREE.Mesh(
-    new THREE.BoxGeometry(0.2, 0.2, 0.2),
-    new THREE.MeshNormalMaterial()
-  );
-  box.position.set(0, 0.3, 0); // near top of the head
-  threeStuffs.faceObject.add(box);
 
 
 
@@ -56,7 +49,7 @@ function init_threeScene(spec) {
   threeStuffs.faceObject.add(threeGlasses);
 
   // add a debug cube:
-   const sc = 0.1;
+   const sc = 0.3;
   const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc,sc,sc), new THREE.MeshNormalMaterial());
   threeStuffs.faceObject.add(debugCube); 
 
