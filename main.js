@@ -27,15 +27,31 @@ function init_threeScene(spec) {
     occluderURL: "models3D/face.json"
   });
 
+
+
   // vertical offset:
   const dy = 0.07;
 
   // create and add the occluder:
   r.occluder.rotation.set(0.3, 0, 0);
-  r.occluder.position.set(0, 0.03 + dy,-0.04);
+  r.occluder.position.set(0, 0.03 + dy, -0.04);
   r.occluder.scale.multiplyScalar(0.0084);
   threeStuffs.faceObject.add(r.occluder);
-  
+
+  // ADD HAIR MODEL (.glb)
+  const gltfLoader = new THREE.GLTFLoader();
+  gltfLoader.load('Hair.glb', (gltf) => {
+    const hairModel = gltf.scene;
+
+    // Adjust position, scale and rotation
+    hairModel.position.set(0, 0.08, -0.05); // adjust as needed
+    hairModel.scale.set(0.01, 0.01, 0.01);  // glb is usually large
+    hairModel.rotation.set(0, Math.PI, 0);  // rotate 180 if needed
+
+    threeStuffs.faceObject.add(hairModel);
+  });
+
+
   // create and add the glasses mesh:
   const threeGlasses = r.glasses;
   //threeGlasses.rotation.set(-0.15,0,0); / /X neg -> rotate branches down
@@ -54,26 +70,26 @@ function init_threeScene(spec) {
 
 
 // entry point:
-function main(){
+function main() {
   JeelizResizer.size_canvas({
     canvasId: 'jeeFaceFilterCanvas',
-    callback: function(isError, bestVideoSettings){
+    callback: function (isError, bestVideoSettings) {
       init_faceFilter(bestVideoSettings);
     }
   })
 }
 
 
-function init_faceFilter(videoSettings){
+function init_faceFilter(videoSettings) {
   JEELIZFACEFILTER.init({
     followZRot: true,
     canvasId: 'jeeFaceFilterCanvas',
     NNCPath: '../../../neuralNets/', // path of NN_DEFAULT.json file
     maxFacesDetected: 1,
-    callbackReady: function(errCode, spec){
-      if (errCode){
-      console.log('AN ERROR HAPPENS. ERR =', errCode);
-      return;
+    callbackReady: function (errCode, spec) {
+      if (errCode) {
+        console.log('AN ERROR HAPPENS. ERR =', errCode);
+        return;
       }
 
       console.log('INFO: JEELIZFACEFILTER IS READY');
@@ -81,7 +97,7 @@ function init_faceFilter(videoSettings){
     },
 
     // called at each render iteration (drawing loop):
-    callbackTrack: function(detectState){
+    callbackTrack: function (detectState) {
       JeelizThreeHelper.render(detectState, THREECAMERA);
     }
   }); //end JEELIZFACEFILTER.init call
