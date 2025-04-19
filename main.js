@@ -56,9 +56,9 @@ function init_threeScene(spec) {
   threeStuffs.faceObject.add(threeGlasses);
 
   // add a debug cube:
-  /* const sc = 0.1;
+   const sc = 0.1;
   const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc,sc,sc), new THREE.MeshNormalMaterial());
-  threeStuffs.faceObject.add(debugCube); //*/
+  threeStuffs.faceObject.add(debugCube); 
 
   // CREATE THE CAMERA:
   THREECAMERA = JeelizThreeHelper.create_camera();
