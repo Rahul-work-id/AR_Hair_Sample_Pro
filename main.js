@@ -45,9 +45,9 @@ function init_threeScene(spec) {
     const hairModel = gltf.scene;
 
     // Adjust position, scale and rotation
-    hairModel.position.set(0, 0.08, -0.05); // adjust as needed
-    hairModel.scale.set(0.01, 0.01, 0.01);  // glb is usually large
-    hairModel.rotation.set(0, Math.PI, 0);  // rotate 180 if needed
+    hairModel.position.set(0, dy, 0.4); // adjust as needed
+    hairModel.scale.multiplyScalar(0.006);  // glb is usually large
+    //hairModel.rotation.set(0, Math.PI, 0);  // rotate 180 if needed
 
     threeStuffs.faceObject.add(hairModel);
   });
