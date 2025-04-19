@@ -79,6 +79,28 @@ function init_threeScene(spec) {
     }
   );
 
+  const loader = new THREE.GLTFLoader();
+
+  loader.load('models3D/Hair.glb', function (gltf) {
+    const model = gltf.scene;
+
+    model.traverse((o) => {
+      if (o.isMesh) {
+        o.material.metalness = 1;
+        o.material.roughness = 1;
+        
+        o.material.needsUpdate = true;
+      }
+    });
+
+    // Optional: scale and position if needed
+    model.scale.set(1, 1, 1);
+    model.position.set(0, 0.6, 0);
+
+    // Add the model to the glasses object or directly to faceObject
+    threeStuffs.faceObject.add(model);
+  });
+
 
   // add a debug cube:
   const sc = 0.3;
@@ -87,11 +109,11 @@ function init_threeScene(spec) {
     metalness: 0.3,
     roughness: 0.4
   });
-  
+
   const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc, sc, sc), cubeMat);
   debugCube.position.set(0, 0.8, 0); // optional: lift it up a bit
   threeStuffs.faceObject.add(debugCube);
-  
+
   // CREATE THE CAMERA:
   THREECAMERA = JeelizThreeHelper.create_camera();
 } // end init_threeScene()
