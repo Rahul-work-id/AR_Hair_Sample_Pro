@@ -48,6 +48,18 @@ function init_threeScene(spec) {
   threeGlasses.scale.multiplyScalar(0.006);
   threeStuffs.faceObject.add(threeGlasses);
 
+   // ✅ LOAD CLOUD MODEL:
+   const loader = new THREE.ObjectLoader();
+   loader.load('models3D/cloud.json', (cloudModel) => {
+     cloudModel.scale.set(0.01, 0.01, 0.01); // Adjust to fit head
+     cloudModel.position.set(0, 0.4, 0);     // Above head
+     cloudModel.rotation.y = Math.PI;       // Optional flip
+     threeStuffs.faceObject.add(cloudModel);
+     console.log('Cloud model loaded and added to face');
+   }, undefined, (err) => {
+     console.error('Error loading cloud model:', err);
+   });
+
   // add a debug cube:
    const sc = 0.3;
   const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc,sc,sc), new THREE.MeshNormalMaterial());
