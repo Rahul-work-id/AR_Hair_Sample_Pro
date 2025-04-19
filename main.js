@@ -51,10 +51,10 @@ function init_threeScene(spec) {
   const loaderCloud = new THREE.BufferGeometryLoader()
 
   loaderCloud.load(
-    'models3D/cloud.json',
+    'models3D/Hair.json',
     (geometry) => {
       const mat = new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('cloud.png'),
+        //map: new THREE.TextureLoader().load('cloud.png'),
         shininess: 2,
         specular: 0xffffff,
         opacity: 0.7,
@@ -65,7 +65,7 @@ function init_threeScene(spec) {
       CLOUDMESH = new THREE.Mesh(geometry, mat);
       CLOUDMESH.scale.multiplyScalar(0.4);
       CLOUDMESH.scale.y = CLOUDMESH.scale.y * 0.5;
-      CLOUDMESH.position.setY(0.85);
+      CLOUDMESH.position.setY(0.8);
       CLOUDMESH.frustumCulled = false;
       CLOUDMESH.renderOrder = 10000;
 
