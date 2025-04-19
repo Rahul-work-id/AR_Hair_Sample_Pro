@@ -48,36 +48,36 @@ function init_threeScene(spec) {
   threeGlasses.scale.multiplyScalar(0.006);
   threeStuffs.faceObject.add(threeGlasses);
 
-  const loaderCloud = new THREE.BufferGeometryLoader()
+  // const loaderCloud = new THREE.BufferGeometryLoader()
 
-  loaderCloud.load(
-    'models3D/Hair.json',
-    (geometry) => {
-      const mat = new THREE.MeshPhongMaterial({
-        //map: new THREE.TextureLoader().load('cloud.png'),
-        shininess: 2,
-        specular: 0xffffff,
-        opacity: 0.7,
-        transparent: true
-      });
+  // loaderCloud.load(
+  //   'models3D/Hair.json',
+  //   (geometry) => {
+  //     const mat = new THREE.MeshPhongMaterial({
+  //       //map: new THREE.TextureLoader().load('cloud.png'),
+  //       shininess: 2,
+  //       specular: 0xffffff,
+  //       opacity: 0.7,
+  //       transparent: true
+  //     });
 
-      // We create our first Cloud, scale and position it
-      CLOUDMESH = new THREE.Mesh(geometry, mat);
-      CLOUDMESH.scale.multiplyScalar(0.4);
-      CLOUDMESH.scale.y = CLOUDMESH.scale.y * 0.5;
-      CLOUDMESH.position.setY(0.8);
-      CLOUDMESH.frustumCulled = false;
-      CLOUDMESH.renderOrder = 10000;
+  //     // We create our first Cloud, scale and position it
+  //     CLOUDMESH = new THREE.Mesh(geometry, mat);
+  //     CLOUDMESH.scale.multiplyScalar(0.4);
+  //     CLOUDMESH.scale.y = CLOUDMESH.scale.y * 0.5;
+  //     CLOUDMESH.position.setY(0.8);
+  //     CLOUDMESH.frustumCulled = false;
+  //     CLOUDMESH.renderOrder = 10000;
 
-      // CREATE OUR PARTICLE MATERIAL
-      let PARTICLESOBJ3D = new THREE.Object3D();
+  //     // CREATE OUR PARTICLE MATERIAL
+  //     let PARTICLESOBJ3D = new THREE.Object3D();
 
-      CLOUDOBJ3D = new THREE.Object3D();
-      CLOUDOBJ3D.add(CLOUDMESH);
+  //     CLOUDOBJ3D = new THREE.Object3D();
+  //     CLOUDOBJ3D.add(CLOUDMESH);
 
-      threeStuffs.faceObject.add(CLOUDOBJ3D)
-    }
-  );
+  //     threeStuffs.faceObject.add(CLOUDOBJ3D)
+  //   }
+  // );
 
   const loader = new THREE.GLTFLoader();
 
@@ -88,7 +88,7 @@ function init_threeScene(spec) {
       if (o.isMesh) {
         o.material.metalness = 1;
         o.material.roughness = 1;
-        
+
         o.material.needsUpdate = true;
       }
     });
