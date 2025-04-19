@@ -39,18 +39,20 @@ function init_threeScene(spec) {
   threeStuffs.faceObject.add(r.occluder);
 
   // ADD HAIR MODEL (.glb)
-  const gltfLoader = new THREE.GLTFLoader(); // NOT just GLTFLoader()
-
-  gltfLoader.load('Hair.glb', (gltf) => {
+  const loader = new THREE.GLTFLoader();
+  loader.load('Hair.glb', (gltf) => {
     const hairModel = gltf.scene;
-
-    // Adjust position, scale and rotation
-    hairModel.position.set(0, dy, 0.4); // adjust as needed
-    hairModel.scale.multiplyScalar(0.006);  // glb is usually large
-    //hairModel.rotation.set(0, Math.PI, 0);  // rotate 180 if needed
-
-    threeStuffs.faceObject.add(hairModel);
+    hairModel.scale.set(1.5, 1.5, 1.5);
+    hairModel.position.set(0, 0.8, 0);
+    hairModel.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+        child.frustumCulled = false;
+      }
+    });
+    helper.faceObject.add(hairModel);
   });
+
 
 
   // create and add the glasses mesh:
