@@ -39,7 +39,8 @@ function init_threeScene(spec) {
   threeStuffs.faceObject.add(r.occluder);
 
   // ADD HAIR MODEL (.glb)
-  const gltfLoader = new GLTFLoader();
+  const gltfLoader = new THREE.GLTFLoader(); // NOT just GLTFLoader()
+
   gltfLoader.load('Hair.glb', (gltf) => {
     const hairModel = gltf.scene;
 
