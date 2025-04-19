@@ -82,9 +82,16 @@ function init_threeScene(spec) {
 
   // add a debug cube:
   const sc = 0.3;
-  const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc, sc, sc), new THREE.MeshNormalMaterial());
+  const cubeMat = new THREE.MeshStandardMaterial({
+    color: 0x00ffcc,
+    metalness: 0.3,
+    roughness: 0.4
+  });
+  
+  const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc, sc, sc), cubeMat);
+  debugCube.position.set(0, 0.8, 0); // optional: lift it up a bit
   threeStuffs.faceObject.add(debugCube);
-
+  
   // CREATE THE CAMERA:
   THREECAMERA = JeelizThreeHelper.create_camera();
 } // end init_threeScene()
