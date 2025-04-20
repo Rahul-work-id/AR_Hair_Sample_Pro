@@ -92,10 +92,9 @@ function init_threeScene(spec) {
     model.traverse((o) => {
       if (o.isMesh) {
         o.material = new THREE.MeshStandardMaterial({
-          map: baseTexture,
-          normalMap: normalMap,
+          color: 0xff0000,
           roughness: 0.5,
-          metalness: 0.8,
+          metalness: 1,
         });
         o.material.needsUpdate = true;
       }
