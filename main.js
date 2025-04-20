@@ -46,7 +46,7 @@ function init_threeScene(spec) {
   //threeGlasses.rotation.set(-0.15,0,0); / /X neg -> rotate branches down
   threeGlasses.position.set(0, dy, 0.4);
   threeGlasses.scale.multiplyScalar(0.006);
-  threeStuffs.faceObject.add(threeGlasses);
+  //threeStuffs.faceObject.add(threeGlasses);
 
   // const loaderCloud = new THREE.BufferGeometryLoader()
 
