@@ -81,31 +81,25 @@ function init_threeScene(spec) {
 
   const loader = new THREE.GLTFLoader();
 
-  const textureLoader = new THREE.TextureLoader();
+  //const textureLoader = new THREE.TextureLoader();
 
-  const baseTexture = textureLoader.load('models3D/R_Hair_texture.png'); // your diffuse texture
-  const normalMap = textureLoader.load('models3D/R_Hair_n_texture_.png');     // your normal map
+  //const baseTexture = textureLoader.load('models3D/R_Hair_texture.png'); // your diffuse texture
+  //const normalMap = textureLoader.load('models3D/R_Hair_n_texture_.png');     // your normal map
 
   loader.load('models3D/R_Hair.glb', function (gltf) {
     const model = gltf.scene;
   
     model.traverse((o) => {
       if (o.isMesh) {
-        o.material = new THREE.MeshStandardMaterial({
-          map: baseTexture,
-          normalMap: normalMap,
-          roughness: 0.5,
-          metalness: 1,
-          transparent: true,
-          alphaTest: 0.5 // cuts out fully transparent pixels
-
-        });
+        o.material.transparent = true;
+        o.material.alphaTest = 0.5;
         o.material.needsUpdate = true;
       }
     });
+    
   
     // Optional: scale and position
-    model.scale.set(0.75, 0.75, 0.75);
+    model.scale.set(100, 100, 100);
     model.position.set(0, 0.4, -0.35);
   
     // Add to the face
