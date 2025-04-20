@@ -96,6 +96,9 @@ function init_threeScene(spec) {
           normalMap: normalMap,
           roughness: 0.5,
           metalness: 1,
+          transparent: true,
+          alphaTest: 0.5 // cuts out fully transparent pixels
+
         });
         o.material.needsUpdate = true;
       }
