@@ -86,9 +86,11 @@ function init_threeScene(spec) {
 
     model.traverse((o) => {
       if (o.isMesh) {
-        o.material.metalness = 1;
-        o.material.roughness = .5;
-        o.material.color.setRGB(1, 0, 0);
+        o.material = new THREE.MeshStandardMaterial({
+          color: 0xff0000,
+          roughness: 0.5,
+          metalness: 1,
+        });
         o.material.needsUpdate = true;
       }
     });
@@ -113,6 +115,14 @@ function init_threeScene(spec) {
   // const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc, sc, sc), cubeMat);
   // debugCube.position.set(0, 0.8, 0); // optional: lift it up a bit
   // threeStuffs.faceObject.add(debugCube);
+
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+  hemiLight.position.set(0, 200, 0);
+  threeStuffs.scene.add(hemiLight);
+
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight.position.set(0, 1, 0);
+  threeStuffs.scene.add(dirLight);
 
   const ambient = new THREE.AmbientLight(0xffffff, 0.8);
   threeStuffs.scene.add(ambient);
