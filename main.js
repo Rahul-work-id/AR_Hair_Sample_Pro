@@ -87,7 +87,7 @@ function init_threeScene(spec) {
     model.traverse((o) => {
       if (o.isMesh) {
         o.material.metalness = 1;
-        o.material.roughness = 1;
+        o.material.roughness = .5;
 
         o.material.needsUpdate = true;
       }
@@ -113,6 +113,9 @@ function init_threeScene(spec) {
   const debugCube = new THREE.Mesh(new THREE.BoxGeometry(sc, sc, sc), cubeMat);
   debugCube.position.set(0, 0.8, 0); // optional: lift it up a bit
   threeStuffs.faceObject.add(debugCube);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+  threeStuffs.scene.add(ambient);
 
   // CREATE THE CAMERA:
   THREECAMERA = JeelizThreeHelper.create_camera();
