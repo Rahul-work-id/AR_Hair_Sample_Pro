@@ -95,7 +95,7 @@ function init_threeScene(spec) {
 
     // Optional: scale and position if needed
     model.scale.set(.8, .8, .8);
-    model.position.set(0, 0.6, 0);
+    model.position.set(0, 0.5, -0.2);
 
     // Add the model to the glasses object or directly to faceObject
     threeStuffs.faceObject.add(model);
