@@ -83,8 +83,8 @@ function init_threeScene(spec) {
 
   const textureLoader = new THREE.TextureLoader();
 
-  const baseTexture = textureLoader.load('models3D/R_Hair_texture.png'); // your diffuse texture
-  const normalMap = textureLoader.load('models3D/R_Hair_n_texture_.png');     // your normal map
+  //const baseTexture = textureLoader.load('models3D/R_Hair_texture.png'); // your diffuse texture
+  //const normalMap = textureLoader.load('models3D/R_Hair_n_texture_.png');     // your normal map
 
   loader.load('models3D/R_Hair.glb', function (gltf) {
     const model = gltf.scene;
