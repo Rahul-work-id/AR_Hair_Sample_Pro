@@ -81,25 +81,31 @@ function init_threeScene(spec) {
 
   const loader = new THREE.GLTFLoader();
 
-  loader.load('Hair.glb', function (gltf) {
-    const model = gltf.scene;
+  const textureLoader = new THREE.TextureLoader();
 
+  const baseTexture = textureLoader.load('textures/hair_basecolor.jpg'); // your diffuse texture
+  const normalMap = textureLoader.load('textures/hair_normal.jpg');     // your normal map
+
+  loader.load('models3D/R_Hair.glb', function (gltf) {
+    const model = gltf.scene;
+  
     model.traverse((o) => {
       if (o.isMesh) {
         o.material = new THREE.MeshStandardMaterial({
-          color: 0xff0000,
+          map: baseTexture,
+          normalMap: normalMap,
           roughness: 0.5,
-          metalness: 1,
+          metalness: 0.8,
         });
         o.material.needsUpdate = true;
       }
     });
-
-    // Optional: scale and position if needed
-    model.scale.set(.8, .8, .8);
+  
+    // Optional: scale and position
+    model.scale.set(0.8, 0.8, 0.8);
     model.position.set(0, 0.5, -0.35);
-
-    // Add the model to the glasses object or directly to faceObject
+  
+    // Add to the face
     threeStuffs.faceObject.add(model);
   });
 
