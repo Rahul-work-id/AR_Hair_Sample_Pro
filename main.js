@@ -100,7 +100,7 @@ function init_threeScene(spec) {
   
     // Optional: scale and position
     model.scale.set(.85, .85, .85);
-    model.position.set(0, 0.35, 0);
+    model.position.set(0, 0.4, -.15);
   
     // Add to the face
     threeStuffs.faceObject.add(model);
